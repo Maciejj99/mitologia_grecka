@@ -1,0 +1,12 @@
+# Pliki generowane przez MySQL
+*.ibd
+*.log
+*.pid
+*.cnf
+*.pem
+
+# Katalogi MySQL
+performance_schema/
+sys/
+
+
