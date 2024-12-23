@@ -16,34 +16,51 @@ Struktura i zawartość bazy danych:
 4. Tabela `stworzenia` – Dane o mitycznych stworzeniach.  `mitologia_grecka_stworzenia.sql`
 
 
-## Struktura bazy danych
-Tabela Bogowie
+# Mitologia Grecka - Struktura Bazy Danych
+
+## Struktura Bazy Danych
+
+### Tabela `Bogowie`
 Przechowuje informacje o bogach:
--id (INT, klucz główny, autoinkrementacja) - ID boga.
--imie (VARCHAR) - Imię boga.
--domena (VARCHAR) - Obszar władzy (np. morze, wojna).
--rodzice (VARCHAR) - Imiona rodziców boga.
--cechy (VARCHAR) - Opis cech boga.
--atrybuty (VARCHAR) - Atrybuty związane z bogiem (np. trójząb Posejdona).
 
-Tabela Mity
+- `id` (INT, klucz główny, autoinkrementacja): ID boga.
+- `imie` (VARCHAR): Imię boga.
+- `domena` (VARCHAR): Obszar władzy (np. morze, wojna).
+- `rodzice` (VARCHAR): Imiona rodziców boga.
+- `cechy` (VARCHAR): Opis cech boga.
+- `atrybuty` (VARCHAR): Atrybuty związane z bogiem (np. trójząb Posejdona).
+
+### Tabela `Mity`
 Przechowuje informacje o mitach:
--id (INT, klucz główny, autoinkrementacja) - ID mitu.
--tytul (VARCHAR) - Tytuł mitu.
--glowne_bostwo_1, glowne_bostwo_2, glowne_bostwo_3 (INT, FK) - Główne bóstwa w micie.
 
-Tabela Stworzenia
+- `id` (INT, klucz główny, autoinkrementacja): ID mitu.
+- `tytul` (VARCHAR): Tytuł mitu.
+- `glowne_bostwo_1`, `glowne_bostwo_2`, `glowne_bostwo_3` (INT, FK): Główne bóstwa w micie.
+
+### Tabela `Stworzenia`
 Przechowuje informacje o stworzeniach:
--id (INT, klucz główny, autoinkrementacja) - ID stworzenia.
--nazwa (VARCHAR) - Nazwa stworzenia.
--opis (TEXT) - Opis stworzenia.
--powiazany_mit (INT, FK) - Powiązany mit.
 
-Tabela Miejsce
+- `id` (INT, klucz główny, autoinkrementacja): ID stworzenia.
+- `nazwa` (VARCHAR): Nazwa stworzenia.
+- `opis` (TEXT): Opis stworzenia.
+- `powiazany_mit` (INT, FK): Powiązany mit.
+
+### Tabela `Miejsce`
 Przechowuje informacje o miejscach:
--id (INT, klucz główny, autoinkrementacja) - ID miejsca.
--nazwa (VARCHAR) - Nazwa miejsca.
--opis_miejsca (TEXT) - Opis miejsca.
+
+- `id` (INT, klucz główny, autoinkrementacja): ID miejsca.
+- `nazwa` (VARCHAR): Nazwa miejsca.
+- `opis_miejsca` (TEXT): Opis miejsca.
+
+---
+
+## Zapytania do Analizy Bazy Danych
+
+### (Bogowie i ich domeny)
+```sql
+SELECT imie, domena
+FROM Bogowie;
+
 
 ## Zapytania do analizy bazy danych 
 --(Bogowie i ich domeny)
