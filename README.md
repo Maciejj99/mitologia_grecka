@@ -56,8 +56,9 @@ Przechowuje informacje o miejscach:
 
 ## Zapytania do Analizy Bazy Danych
 
-### (Bogowie i ich domeny)
+### Zapytania 
 ```sql
+###(Bogowie i ich domeny)
 SELECT imie, domena
 FROM Bogowie;
 
