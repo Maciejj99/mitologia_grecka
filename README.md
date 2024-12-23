@@ -61,13 +61,7 @@ Przechowuje informacje o miejscach:
 SELECT imie, domena
 FROM Bogowie;
 
-
-## Zapytania do analizy bazy danych 
---(Bogowie i ich domeny)
-SELECT imie, domena
-FROM Bogowie;
-
---(mity + Bogowie powiązani z mitem)
+### (mity + Bogowie powiązani z mitem)
 SELECT Mity.tytul, Bogowie.imie
 FROM Mity
 LEFT JOIN Bogowie ON Mity.glowne_bostwo_1 = Bogowie.id;
@@ -85,12 +79,12 @@ LEFT JOIN Bogowie ON Mity.glowne_bostwo_1 = Bogowie.id
 	OR Mity.glowne_bostwo_3 = Bogowie.id
 WHERE Bogowie.id = 3;
 
--- (stworzenia i powiązane mity)
+###  (stworzenia i powiązane mity)
 SELECT stworzenia.nazwa, mity.tytul
 FROM stworzenia
 LEFT JOIN mity on stworzenia.powiazany_mit = mity.id;
 
--- (Bogowie, mity i powiązane stworzenia)
+### (Bogowie, mity i powiązane stworzenia)
 SELECT mity.tytul, bogowie.imie, stworzenia.nazwa
 FROM mity
 LEFT JOIN bogowie ON Mity.glowne_bostwo_1 = Bogowie.id
@@ -98,7 +92,7 @@ LEFT JOIN bogowie ON Mity.glowne_bostwo_1 = Bogowie.id
 	OR Mity.glowne_bostwo_3 = Bogowie.id
 LEFT JOIN stworzenia ON mity.id = stworzenia.powiazany_mit;
 
--- (Bogowie, liczba mitów w których są głównymi postaciami)
+### (Bogowie, liczba mitów w których są głównymi postaciami)
 SELECT bogowie.imie, COUNT(mity.id)
 FROM bogowie
 LEFT JOIN mity on bogowie.id = mity.glowne_bostwo_1
@@ -106,7 +100,7 @@ LEFT JOIN mity on bogowie.id = mity.glowne_bostwo_1
 	OR bogowie.id = mity.glowne_bostwo_3
 GROUP BY bogowie.imie;
 
--- (Stworzenia pojawiające się w więcej niz jedynm micie)
+### (Stworzenia pojawiające się w więcej niz jedynm micie)
 SELECT stworzenia.nazwa, COUNT(powiazany_mit)
 FROM stworzenia
 GROUP BY stworzenia.nazwa
@@ -116,7 +110,7 @@ SELECT stworzenia.nazwa, COUNT(powiazany_mit)
 FROM stworzenia
 GROUP BY stworzenia.nazwa;
 
--- (Bogowie nie powiązani z żadnym mitem)
+### (Bogowie nie powiązani z żadnym mitem)
 SELECT bogowie.imie
 FROM bogowie
 LEFT JOIN mity 
@@ -125,7 +119,7 @@ ON bogowie.id = mity.glowne_bostwo_1
 	OR bogowie.id = mity.glowne_bostwo_3
 WHERE mity.id IS NULL;
 
--- (Mity, Bogowie, powiązane miejsce)
+### (Mity, Bogowie, powiązane miejsce)
 SELECT mity.tytul, bogowie.imie, miejsce.nazwa
 FROM mity
 LEFT JOIN bogowie ON mity.glowne_bostwo_1 = bogowie.id
